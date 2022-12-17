@@ -8,7 +8,7 @@ include "../connexion.php";
 
 $libelle=$_POST["libelle"];
 
-
+$continentsReq = $pdo->prepare("select * from continent");
 $req=$pdo->prepare("INSERT INTO nationalite (libelle) values (:libelle)");
 $req->bindParam(":libelle",$libelle);
 
@@ -16,6 +16,7 @@ $req->bindParam(":libelle",$libelle);
 try{
 
     $success=$req->execute();
+    $continentsReq->execute();
 
     if($success){
         $_SESSION["message"] = ["success" => "nationality added with success"];
