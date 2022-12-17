@@ -3,10 +3,16 @@ include "./includes/head.html.php";
 include "./includes/navbar.html.php";
 include "./actions/connexion.php";
 
-$req=$pdo->prepare("SELECT * from nationalite");
-$req->setFetchMode(PDO::FETCH_OBJ);
-$req->execute();
-$nationalities=$req->fetchAll();
+
+try{
+
+  $req=$pdo->prepare("SELECT n.num,n.libelle as nat_libelle,c.libelle as cont_libelle from nationalite n inner join continent c on n.numContinent = c.num");
+  $req->setFetchMode(PDO::FETCH_OBJ);
+  $req->execute();
+  $nationalities=$req->fetchAll();
+}catch(Exception $e){
+  die($e);
+}
 
 
 
@@ -66,7 +72,10 @@ $nationalities=$req->fetchAll();
                 #
               </th>
               <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 border-r">
-                libelle
+                 nationality
+              </th>
+              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 border-r">
+                 continent
               </th>
             
             </tr>
@@ -76,7 +85,9 @@ $nationalities=$req->fetchAll();
 
             <tr class="border-b max-w-xs">
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r"><?= $nationality->num;?></td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r"><?= $nationality->libelle;?></td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r"><?= $nationality->nat_libelle;?></td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r"><?= $nationality->cont_libelle;?></td>
+             
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r"><a href="./nationalities-edit-form.html.php?num=<?= $nationality->num?>">Edit</a></td>
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r"><a class="delete-anchor cursor-pointer" data-nationality-number='<?=$nationality->num?>'  data-nationality-label="<?=$nationality->libelle;?>">delete</a></td>
             
