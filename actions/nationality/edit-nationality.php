@@ -14,20 +14,28 @@ if(isset($numPost))echo"numpost is there ";
 else  echo"numpost is not there ";
 
 try{
+
 $req=$pdo->prepare("UPDATE nationalite SET libelle=:libelle WHERE num=:num");
 $req->bindParam(":libelle",$libelle);
 
 
 
     $req->bindParam(":num",$numPost);
-$req->execute();
+    $success=$req->execute();
    
 
-echo"<br/>";
+if($success){
+        $_SESSION["message"] = ["success" => "succed to modify nationality to $libelle"];
+        
+    }else{
+        $_SESSION["message"] = ["error" => "failed to modify nationality to $libelle"];
+        
+        
+    }
+    header("location:../../nationalities.html.php");
+    exit();
 
-    if($req->rowCount()>0)echo "nationality edited ";
       
-    else echo("failed to edit nationalty ");
 
 
     
@@ -43,6 +51,3 @@ echo"<br/>";
 
 
 ?>
-
-<br />
-<a href="../../nationalities.html.php"> show all nationalities</a>

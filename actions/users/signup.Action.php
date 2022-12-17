@@ -91,7 +91,6 @@ if(isset($_POST["submit"])){
         }
         catch(Exception $exception){
             die($exception);
-            echo $exception;
         }
     
 }
