@@ -7,6 +7,8 @@ include "../connexion.php";
 
 
 $libelle=$_POST["libelle"];
+$numContinent=$_POST["continent"];
+
 $num=$_GET["num"];
 $numPost = $_POST["num"];
 
@@ -15,12 +17,10 @@ else  echo"numpost is not there ";
 
 try{
 
-$req=$pdo->prepare("UPDATE nationalite SET libelle=:libelle WHERE num=:num");
+$req=$pdo->prepare("UPDATE nationalite SET libelle=:libelle,numContinent=:numContinent WHERE num=:num");
 $req->bindParam(":libelle",$libelle);
-
-
-
-    $req->bindParam(":num",$numPost);
+$req->bindParam(":numContinent",$numContinent);
+$req->bindParam(":num",$numPost);
     $success=$req->execute();
    
 
