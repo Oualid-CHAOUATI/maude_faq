@@ -29,4 +29,12 @@ body {
 .modal-wrapper.show {
   opacity: 1;
   pointer-events: all;
+}
+
+form {
+  max-width: 500px;
+  border: 2px solid yellow;
+  padding: 2em;
+  margin-block: 1em;
+  border-radius: 1em;
 }/*# sourceMappingURL=style.css.map */
