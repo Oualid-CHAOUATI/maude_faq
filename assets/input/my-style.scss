@@ -1,0 +1,13 @@
+nav {
+    li{
+        a{
+            @apply p-3 text-blue-700 block;
+
+            &:hover{
+                @apply opacity-80;
+            }
+        }
+    }
+}
+
+
