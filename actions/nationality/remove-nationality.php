@@ -26,8 +26,11 @@ if($success){
 
 
 }catch(Exception $e){
-    echo $e->getMessage();
-    die($e->getMessage());
+    $_SESSION["message"] = ["error" => "error with database tring to delete nationality  
+    </br> message error = ".$e->getMessage()];
+    header("location:../../nationalities.html.php");
+
+    exit();
 }
 
 }
@@ -37,5 +40,3 @@ if($success){
 
 ?>
 
-<br />
-<a href="../../nationalities.html.php"> show all nationalities</a>

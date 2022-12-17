@@ -42,8 +42,12 @@ if($success){
 
 
 }catch(Exception $e){
-    echo $e->getMessage();
-    die($e->getMessage());
+    $_SESSION["message"] = ["error" => "error with database tring to edit nationality  to $libelle
+    </br> message error = ".$e->getMessage()];
+    header("location:../../nationalities.html.php");
+
+    exit();
+
 }
 
 
