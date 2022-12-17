@@ -6,7 +6,7 @@ include "./actions/connexion.php";
 
 try{
 
-  $req=$pdo->prepare("SELECT n.num,n.libelle as nat_libelle,c.libelle as cont_libelle from nationalite n inner join continent c on n.numContinent = c.num");
+  $req=$pdo->prepare("SELECT n.num,n.libelle as nat_libelle,c.libelle as cont_libelle from nationalite n inner join continent c on n.numContinent = c.num ORDER BY n.num");
   $req->setFetchMode(PDO::FETCH_OBJ);
   $req->execute();
   $nationalities=$req->fetchAll();
