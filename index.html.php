@@ -4,7 +4,7 @@ include "./includes/navbar.html.php";
 
 ?>
 
-<main style="background:yellow;!important">
+<main>
 
 Index
 </main>

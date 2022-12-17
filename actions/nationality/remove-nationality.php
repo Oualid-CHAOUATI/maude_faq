@@ -14,14 +14,13 @@ try{
 $req=$pdo->prepare("DELETE FROM nationalite WHERE num=:num");
 $req->bindParam(":num",$num);
 
-$req->execute();
+$success=$req->execute();
 
-echo"<br/>";
-
-    if($req->rowCount()>0)echo "nationality removeed ";
-      
-    else echo("failed to remove nationalty ");
-
+if($success){
+            $_SESSION["message"] = ["success" => "nationality deleted with success"];
+            header("location:../../nationalities.html.php");
+            exit();
+}
 
     
 

@@ -1,6 +1,6 @@
 <?php 
-include "../../includes/head.html.php";
-include "../../includes/navbar.html.php";
+
+
 
 include "../connexion.php";
 
@@ -17,12 +17,15 @@ try{
 
     $success=$req->execute();
 
-    if($success)echo "added with success";
-    else{
-        echo("failed to add ");
-
+    if($success){
+        $_SESSION["message"] = ["success" => "nationality added with success"];
     }
-
+    else{
+        $_SESSION["message"] = ["error" => "failed to add nationality "];
+        
+    }
+    header("location:../../nationalities.html.php");
+    exit();
     
 
 
@@ -35,6 +38,3 @@ try{
 
 
 ?>
-
-
-<a href="../../nationalities.html.php"> show all nationalities</a>

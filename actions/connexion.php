@@ -16,6 +16,6 @@ try{
 }
 catch(Exception $exception){
     die('une erreur est survenu au lancement de la database '.$exception->getMessage());
-    $pdo=null;
+    // $pdo=null;
 
 }
