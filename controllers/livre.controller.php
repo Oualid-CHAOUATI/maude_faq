@@ -121,14 +121,14 @@ switch ($action) {
         try {
             global $res;
             $res = Livre::deleteLivre($num);
+            createMessageSuccess("Livre a été supprimé");
         } catch (Exception $e) {
 
             header("location:index.php?uc=$page&action=list");
-            return   createMessageSuccess("Error .. ce livre est en pret");
+            createMessageSuccess("Erreur !   ce livre est en relation avec d'autres données (un pret) !!");
         }
 
 
-        createMessageSuccess("Livre a été supprimé");
         header("location:index.php?uc=$page&action=list");
 
 

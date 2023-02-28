@@ -100,12 +100,12 @@ switch ($action) {
         try {
 
             Auteur::deleteAuteur($num);
-            echo "deleted successfully";
+            createMessageSuccess("auteur supprimé !!");
         } catch (Exception $e) {
+            createMessageSuccess("Erreur ! auteur en relation avec d'autres données !!");
             echo "error delete exception ";
         }
 
-        createMessageSuccess("auteur supprimé !!");
 
         header("location:index.php?uc=$page&action=list");
 

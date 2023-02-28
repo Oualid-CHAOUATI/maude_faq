@@ -43,9 +43,14 @@ switch ($action) {
         $libelle = $_POST["libelle"];
         $continent = new Continent();
         $continent->setLibelle($libelle);
-        Continent::addContinent($continent);
 
-        createMessageSuccess("continent créé!");
+        try {
+
+            Continent::addContinent($continent);
+            createMessageSuccess("continent créé!");
+        } catch (Exception $ex) {
+            createMessageSuccess("continent déjà existant!");
+        }
 
         header("location:index.php?uc=$page&action=list");
 
@@ -77,11 +82,12 @@ switch ($action) {
 
             Continent::deleteContinent($num);
             echo "deleted successfully";
+            createMessageSuccess("continent supprimé !!");
         } catch (Exception $e) {
             echo "error delete exception ";
+            createMessageSuccess("Erreur de supression ! continent en relation avec d'autres données !!");
         }
 
-        createMessageSuccess("continent supprimé !!");
 
         header("location:index.php?uc=$page&action=list");
 

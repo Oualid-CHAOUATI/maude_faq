@@ -124,7 +124,7 @@ switch ($action) {
             createMessageSuccess("Adherent supprimé !!");
         } catch (Exception $e) {
             echo "error delete exception ";
-            createMessageSuccess("Adherent en relation avec un pret !!");
+            createMessageSuccess("Adherent en relation avec d'aures données (un pret) !!");
         }
 
 

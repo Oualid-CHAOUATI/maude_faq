@@ -332,4 +332,8 @@ table thead th {
 .hero-section .right img {
   transform: translateX(calc(-1 * var(--x))) rotate(calc(-1 * var(--deg))) scale(2);
 }
+
+pop-ups {
+  z-index: 99;
+}
 /*# sourceMappingURL=my-style.css.map */

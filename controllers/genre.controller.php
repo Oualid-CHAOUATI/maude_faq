@@ -64,8 +64,8 @@ switch ($action) {
 
 
         Genre::addGenre($genre);
-        createMessageSuccess("Genre ajouté!");
 
+        createMessageSuccess("genre créé !");
 
         header("location:index.php?uc=$page&action=list");
 
@@ -98,12 +98,11 @@ switch ($action) {
         try {
 
             Genre::deleteGenre($num);
-            echo "deleted successfully";
+            createMessageSuccess("Genre supprimé !!");
         } catch (Exception $e) {
+            createMessageSuccess("Suppression impossible, le genre est associée à d'autres données ... !");
             echo "error delete exception ";
         }
-
-        createMessageSuccess("Genre supprimé !!");
 
         header("location:index.php?uc=$page&action=list");
 

@@ -109,12 +109,12 @@ switch ($action) {
         try {
 
             Pret::deletePret($num);
-            echo "deleted successfully";
+            createMessageSuccess("pret supprimé !!");
         } catch (Exception $e) {
+            createMessageSuccess("Erreeur ! pret en relation avec d'autres données !!");
             echo "error delete exception ";
         }
 
-        createMessageSuccess("pret supprimé !!");
 
         header("location:index.php?uc=$page&action=list");
 

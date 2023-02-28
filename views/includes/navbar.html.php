@@ -66,7 +66,7 @@ $messages = $_SESSION["messages"];
 
 
 
-<div class=" flex flex-col gap-2 fixed bottom-0 w-full mx-auto left-0 ">
+<pop-ups class=" flex flex-col gap-2 fixed bottom-0 w-full mx-auto left-0 ">
 
   <?php
   foreach ($messages as $type => $messagesArray) {
@@ -74,21 +74,21 @@ $messages = $_SESSION["messages"];
   ?>
       <?php $DOM_KEY = $type . $index; ?>
 
-      <div id="pop-up-<?= $DOM_KEY; ?>" class="pop-up bg-green-500 flex gap-2 justify-between px-4 py-3 border-4 border-blue-700 bg-opacity-80">
+      <div id='pop-up-<?= $DOM_KEY; ?>' class=" pop-up bg-green-500 flex gap-2 justify-between px-4 py-3 border-4 border-blue-700 bg-opacity-80">
   <div class="flex items-center text-white text-sm font-bold " role="alert">
     <?php getIcon("i"); ?>
     <p>
       <?= $message; ?>
     </p>
   </div>
-  <button class="close-pop-up-btn" data-parent-id="pop-up-<?= $DOM_KEY; ?>">
+  <button class="close-pop-up-btn" data-parent-id='pop-up-<?= $DOM_KEY; ?>'>
     <?php getIcon("x"); ?>
 
   </button>
 </div>
 <?php endforeach ?>
 <?php } ?>
-</div>
+</pop-ups>
 
 
 <?php

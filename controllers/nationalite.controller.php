@@ -97,12 +97,12 @@ switch ($action) {
         try {
 
             Nationalite::deleteNationalite($num);
-            echo "deleted successfully";
+            createMessageSuccess("Nationalite supprimé !!");
         } catch (Exception $e) {
             echo "error delete exception ";
+            createMessageSuccess("Erreur ! Nationalite en relation avec d'autres données !!");
         }
 
-        createMessageSuccess("Nationalite supprimé !!");
 
         header("location:index.php?uc=$page&action=list");
 

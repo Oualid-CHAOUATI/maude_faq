@@ -116,7 +116,7 @@ class Nationalite
     //  * @return Nationalite
      */
     // public static function findByID(int $id): Continent
-    public static function findByID(int $id)
+    public static function findByID($id)
     {
         $req = MonPdo::getInstance()->prepare("SELECT * FROM nationalite where num = :id");
         $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, "Nationalite");

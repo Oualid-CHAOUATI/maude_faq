@@ -54,14 +54,16 @@ class Auteur
      *
      * @return  int
      */
-    public function getNumNationalite(): int
+    public function getNumNationalite()
     {
         return $this->num_nationalite;
     }
 
-    public function getLibelleNationalite(): string
+    public function getLibelleNationalite()
     {
-        return Nationalite::findByID($this->getNumNationalite())->getLibelle();
+        $nat = Nationalite::findByID($this->getNumNationalite());
+        if ($nat) return $nat->getLibelle();;
+        return "non renseignée";
     }
 
     /**

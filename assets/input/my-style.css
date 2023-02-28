@@ -183,22 +183,8 @@ table thead th {
   top: 50%;
   border: 3px solid rgb(79, 224, 21);
   transform: translate(-50%, -50%);
-  -webkit-animation: ripple forwards;
-          animation: ripple forwards;
-  -webkit-animation-duration: var(--animation-duration);
-          animation-duration: var(--animation-duration);
-}
-
-@-webkit-keyframes ripple {
-  0%, 100% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    height: 3em;
-  }
+  animation: ripple forwards;
+  animation-duration: var(--animation-duration);
 }
 
 @keyframes ripple {
@@ -216,7 +202,6 @@ table thead th {
   overflow: hidden;
   @apply flex  justify-center items-center;
   height: 800px;
-  min-height: -webkit-max-content;
   min-height: -moz-max-content;
   min-height: max-content;
 }
@@ -240,4 +225,8 @@ table thead th {
 }
 .hero-section .right img {
   transform: translateX(calc(-1 * var(--x))) rotate(calc(-1 * var(--deg))) scale(2);
+}
+
+pop-ups {
+  z-index: 99;
 }/*# sourceMappingURL=my-style.css.map */
