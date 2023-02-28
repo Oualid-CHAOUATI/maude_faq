@@ -1,13 +1,294 @@
-nav {
-    li{
-        a{
-            @apply p-3 text-blue-700 block;
+*{
+  box-sizing: border-box;
+}
+body {
+  max-width: 1800px;
+  @apply mx-auto;
+  background: rgb(1, 7, 41);
+  color: #fff;
+  position: relative;
 
-            &:hover{
-                @apply opacity-80;
-            }
-        }
+  padding-inline:2em;
+
+  @apply flex flex-col min-h-screen;
+  /* overflow-x: hidden; */
+}
+
+a,
+button {
+  @apply cursor-pointer;
+}
+
+.radius-1 {
+  border-radius: 0.2em;
+}
+
+.modal-wrapper {
+  @apply h-screen w-screen fixed bg-blue-800 flex justify-center items-center inset-0 pointer-events-none opacity-0 duration-300;
+  background: rgb(5, 5, 30);
+
+  a {
+    @extend .radius-1;
+    @apply px-5 py-3;
+
+    &#cancell-btn {
+      border: 2px solid blue;
     }
+    &#confirm-delete-btn {
+      background: red;
+    }
+  }
+
+  &.show {
+    @apply opacity-100 pointer-events-auto;
+  }
+}
+
+form {
+  @apply max-w-sm;
+}
+table {
+  @apply border text-center mx-auto mt-4;
+
+  tr {
+    // @apply max-w-xs;
+  }
+
+  th,
+  tr,
+  th,
+  td {
+    @apply px-6  py-4    border border-blue-700  text-gray-100;
+  }
+  thead {
+    border-bottom: 0.5em rgb(119, 0, 255) solid;
+    tr,
+    th {
+      border-bottom: 0 !important;
+    }
+  }
+}
+
+.flex-cell {
+  @apply flex gap-2;
+
+  /* items-center  -- */
+  //! this doesnt work .. you have to import
+  /* align-items: center; */
+}
+
+.label-1 {
+  @apply block mb-2 text-sm font-medium  text-yellow-200;
+}
+
+.input-1 {
+  @extend .radius-1;
+
+  @apply bg-gray-50  text-gray-900   
+  
+   block w-full px-3 py-2.5  outline-none;
+
+  &:focus {
+    @apply ring-4 ring-blue-500;
+  }
+}
+
+.submit-btn {
+  @extend .radius-1;
+
+  @apply text-white bg-blue-700 px-4 py-2.5;
+  &:hover {
+    @apply bg-blue-800;
+  }
+
+  &:focus {
+    @apply outline-none ring-blue-300  
+    ring-4;
+  }
+}
+
+.cta-btn {
+  @extend .radius-1;
+  @apply bg-indigo-600 px-8 py-3  transition  outline-none;
+
+  &:hover {
+    box-shadow: 0 0 10px 3px blue;
+  }
+
+  &:focus {
+    @apply ring;
+  }
+  &:active {
+    @apply bg-indigo-500;
+  }
+}
+
+.go-back-btn {
+  @extend .cta-btn;
+  @extend .flex-cell;
+  svg {
+    transition: 300ms;
+  }
+
+  &:hover {
+    svg {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+.nav-menu {
+  a {
+    position: relative;
+    padding: 0.5em;
+    display: block;
+    span {
+      display: block;
+      transition: 200ms;
+    }
+    &:before,
+    &:after {
+      position: absolute;
+      content: "";
+      left: 0;
+      right: 0;
+      width: 100%;
+
+      transform: scaleY(0);
+      height: 0.2em;
+      background-color: rgb(255, 255, 255);
+      bottom: 0;
+
+      transition: 500ms;
+      // filter: blur(10px);
+      opacity: 0;
+    }
+
+    &:before {
+      transform-origin: left;
+    }
+
+    &:after {
+      transform-origin: right;
+    }
+
+    &:hover {
+      span {
+        transform: translateY(-20%);
+      }
+      &::before,
+      &:after {
+        transform: scaleY(1);
+        opacity: 1;
+      }
+    }
+  }
+}
+
+#logo {
+  height: 4em;
+}
+
+:root {
+  /* --x:50px; */
+  /* --y:50px; */
+}
+
+#custom-cursor {
+  /* --x:-100vh; */
+  position: fixed;
+
+  pointer-events: none;
+
+  $s: 0.5em;
+  height: $s;
+  width: $s;
+  background-color: rgb(72, 255, 0);
+  border-radius: 50%;
+
+  left: 0px;
+  top: 0px;
+  transform: translate(-50%, -50%);
+
+  left:var(--x);
+  top:var(--y);
+
+  transition-property: left, top;
+  outline: 2px solid blue;
+  outline-offset: 1em;
+  opacity: 0.5;
+
+  //  transition-duration: 100ms;
+}
+
+.ripple {
+  pointer-events: none;
+  position: fixed;
+
+  height: 0;
+  aspect-ratio: 1;
+  left: 50%;
+  top: 50%;
+
+  border: 3px solid rgb(79, 224, 21);
+  transform: translate(-50%, -50%);
+
+  animation: ripple forwards;
+  animation-duration: var(--animation-duration);
+}
+
+@keyframes ripple {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    $s: 3em;
+    height: $s;
+  }
 }
 
 
+
+.hero-section{
+
+  overflow: hidden;
+
+@apply flex  justify-center items-center;
+
+height: 800px;
+min-height: max-content;
+
+
+&>*{
+  flex:1;
+}
+
+.cover{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+
+
+
+.right{
+  --x:100px;
+  overflow: hidden;
+  align-self: stretch;
+  --deg:45deg;
+  transform: translateX(var(--x)) rotate(var(--deg)) scale(1.5);
+  border-radius: 8em;;
+  z-index: -1;
+
+  img{
+
+    transform:translateX(calc(-1* var(--x))) rotate(calc(-1 * var(--deg))) scale(2);
+  }
+ 
+}
+}

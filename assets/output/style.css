@@ -486,7 +486,7 @@ table {
   border-collapse: collapse;
 }
 
-h1,
+/* h1,
 h2,
 h3,
 h4,
@@ -494,7 +494,7 @@ h5,
 h6 {
   font-size: inherit;
   font-weight: inherit;
-}
+} */
 
 /**
  * Reset links to optimize for opt-in styling instead of
@@ -565,7 +565,7 @@ embed,
 object {
   display: block;
   /* 1 */
-  // vertical-align: middle;
+   /* vertical-align: middle; */
   /* 2 */
 }
 

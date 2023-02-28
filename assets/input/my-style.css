@@ -1,6 +1,243 @@
-nav li a {
-  @apply p-3 text-blue-700 block;
+* {
+  box-sizing: border-box;
 }
-nav li a:hover {
-  @apply opacity-80;
+
+body {
+  max-width: 1800px;
+  @apply mx-auto;
+  background: rgb(1, 7, 41);
+  color: #fff;
+  position: relative;
+  padding-inline: 2em;
+  @apply flex flex-col min-h-screen;
+  /* overflow-x: hidden; */
+}
+
+a,
+button {
+  @apply cursor-pointer;
+}
+
+.radius-1, .cta-btn, .go-back-btn, .submit-btn, .input-1, .modal-wrapper a {
+  border-radius: 0.2em;
+}
+
+.modal-wrapper {
+  @apply h-screen w-screen fixed bg-blue-800 flex justify-center items-center inset-0 pointer-events-none opacity-0 duration-300;
+  background: rgb(5, 5, 30);
+}
+.modal-wrapper a {
+  @apply px-5 py-3;
+}
+.modal-wrapper a#cancell-btn {
+  border: 2px solid blue;
+}
+.modal-wrapper a#confirm-delete-btn {
+  background: red;
+}
+.modal-wrapper.show {
+  @apply opacity-100 pointer-events-auto;
+}
+
+form {
+  @apply max-w-sm;
+}
+
+table {
+  @apply border text-center mx-auto mt-4;
+}
+table th,
+table tr,
+table th,
+table td {
+  @apply px-6  py-4    border border-blue-700  text-gray-100;
+}
+table thead {
+  border-bottom: 0.5em rgb(119, 0, 255) solid;
+}
+table thead tr,
+table thead th {
+  border-bottom: 0 !important;
+}
+
+.flex-cell, .go-back-btn {
+  @apply flex gap-2;
+  /* items-center  -- */
+  /* align-items: center; */
+}
+
+.label-1 {
+  @apply block mb-2 text-sm font-medium  text-yellow-200;
+}
+
+.input-1 {
+  @apply bg-gray-50  text-gray-900   
+  
+   block w-full px-3 py-2.5  outline-none;
+}
+.input-1:focus {
+  @apply ring-4 ring-blue-500;
+}
+
+.submit-btn {
+  @apply text-white bg-blue-700 px-4 py-2.5;
+}
+.submit-btn:hover {
+  @apply bg-blue-800;
+}
+.submit-btn:focus {
+  @apply outline-none ring-blue-300  
+    ring-4;
+}
+
+.cta-btn, .go-back-btn {
+  @apply bg-indigo-600 px-8 py-3  transition  outline-none;
+}
+.cta-btn:hover, .go-back-btn:hover {
+  box-shadow: 0 0 10px 3px blue;
+}
+.cta-btn:focus, .go-back-btn:focus {
+  @apply ring;
+}
+.cta-btn:active, .go-back-btn:active {
+  @apply bg-indigo-500;
+}
+
+.go-back-btn svg {
+  transition: 300ms;
+}
+.go-back-btn:hover svg {
+  transform: translateX(-50%);
+}
+
+.nav-menu a {
+  position: relative;
+  padding: 0.5em;
+  display: block;
+}
+.nav-menu a span {
+  display: block;
+  transition: 200ms;
+}
+.nav-menu a:before, .nav-menu a:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  right: 0;
+  width: 100%;
+  transform: scaleY(0);
+  height: 0.2em;
+  background-color: rgb(255, 255, 255);
+  bottom: 0;
+  transition: 500ms;
+  opacity: 0;
+}
+.nav-menu a:before {
+  transform-origin: left;
+}
+.nav-menu a:after {
+  transform-origin: right;
+}
+.nav-menu a:hover span {
+  transform: translateY(-20%);
+}
+.nav-menu a:hover::before, .nav-menu a:hover:after {
+  transform: scaleY(1);
+  opacity: 1;
+}
+
+#logo {
+  height: 4em;
+}
+
+:root {
+  /* --x:50px; */
+  /* --y:50px; */
+}
+
+#custom-cursor {
+  /* --x:-100vh; */
+  position: fixed;
+  pointer-events: none;
+  height: 0.5em;
+  width: 0.5em;
+  background-color: rgb(72, 255, 0);
+  border-radius: 50%;
+  left: 0px;
+  top: 0px;
+  transform: translate(-50%, -50%);
+  left: var(--x);
+  top: var(--y);
+  transition-property: left, top;
+  outline: 2px solid blue;
+  outline-offset: 1em;
+  opacity: 0.5;
+}
+
+.ripple {
+  pointer-events: none;
+  position: fixed;
+  height: 0;
+  aspect-ratio: 1;
+  left: 50%;
+  top: 50%;
+  border: 3px solid rgb(79, 224, 21);
+  transform: translate(-50%, -50%);
+  -webkit-animation: ripple forwards;
+          animation: ripple forwards;
+  -webkit-animation-duration: var(--animation-duration);
+          animation-duration: var(--animation-duration);
+}
+
+@-webkit-keyframes ripple {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    height: 3em;
+  }
+}
+
+@keyframes ripple {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    height: 3em;
+  }
+}
+.hero-section {
+  overflow: hidden;
+  @apply flex  justify-center items-center;
+  height: 800px;
+  min-height: -webkit-max-content;
+  min-height: -moz-max-content;
+  min-height: max-content;
+}
+.hero-section > * {
+  flex: 1;
+}
+.hero-section .cover {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.hero-section .right {
+  --x:100px;
+  overflow: hidden;
+  align-self: stretch;
+  --deg:45deg;
+  transform: translateX(var(--x)) rotate(var(--deg)) scale(1.5);
+  border-radius: 8em;
+  z-index: -1;
+}
+.hero-section .right img {
+  transform: translateX(calc(-1 * var(--x))) rotate(calc(-1 * var(--deg))) scale(2);
 }/*# sourceMappingURL=my-style.css.map */

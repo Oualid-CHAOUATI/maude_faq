@@ -1,6 +1,0 @@
-nav li a {
-  @apply p-3 text-blue-700 block;
-}
-nav li a:hover {
-  @apply opacity-80;
-}/*# sourceMappingURL=my-style.css.map */
