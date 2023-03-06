@@ -34,14 +34,14 @@ $req->bindParam(":motdepasse", $motdepasse);
 try {
 
     $res = $req->execute();
-    echo $res;
-    return $res;
+    echo "alert('inscription reussie ')";
 } catch (Exception $e) {
+    echo "alert('inscription non reussie ')";
     die($e->getMessage());
     echo $e;
 }
 
-header("location:index.php?uc=connexion");
+header("location:../index.php");
 
 
 
