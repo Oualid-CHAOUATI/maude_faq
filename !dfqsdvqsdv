@@ -1,0 +1,18 @@
+[33mc778d78[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m remove unecessary files
+[33mbd1adc3[m test
+[33me4336af[m test
+[33m77c50a2[m last commit before submit
+[33mfad58ce[m final before submit
+[33m4c91e8f[m mvc init
+[33mde85db7[m finished search form
+[33m4776770[m handle edit nationality
+[33mbeabc07[m fixed select in edit form and default value for continent
+[33md4aad79[m order nationalities by their num
+[33me2c1702[m fixed php add continent to nationality table
+[33mca18735[m add nationality form fixed .. next is fix php server
+[33md35d304[m added continent to display all nationalities table
+[33m2da1679[m fixed delete error die , replaced with pop up showing server error
+[33m647f856[m add pop up to edit nationality
+[33mf7cf2cf[m ok
+[33medbdf7e[m handle delete nationality add modal for delete using javascript add popupus for delete and adding nationality using session
+[33m41c76f8[m first commit
